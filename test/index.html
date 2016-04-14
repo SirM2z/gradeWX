@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Spec Runner</title>
+  <link rel="stylesheet" href="../bower_components/mocha/mocha.css">
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="../bower_components/mocha/mocha.js"></script>
+  <script>mocha.setup('bdd');</script>
+  <script src="../bower_components/chai/chai.js"></script>
+  <script>
+    var assert = chai.assert;
+    var expect = chai.expect;
+    var should = chai.should();
+  </script>
+  <!-- bower:js -->
+  <!-- endbower -->
+  <!-- include source files here... -->
+  <script src="routers/route.js"></script>
+  <script src="views/login.js"></script>
+  <script src="views/index.js"></script>
+  <script src="views/gradetype.js"></script>
+  <script src="views/givegrade.js"></script>
+  <script src="views/bindRoome.js"></script>
+  <script src="views/checkgrade.js"></script>
+  <script src="views/gradedetail.js"></script>
+  <script src="models/usermodel.js"></script>
+  <script src="models/gradesettings.js"></script>
+  <script src="models/schoolyear.js"></script>
+  <script src="collections/SchoolYearList.js"></script>
+  <script src="models/liveArea.js"></script>
+  <script src="collections/liveAreaList.js"></script>
+  <script src="models/floor.js"></script>
+  <script src="collections/floorList.js"></script>
+  <script src="models/GradeTable.js"></script>
+  <script src="collections/GradeTableList.js"></script>
+  <script src="models/Role.js"></script>
+  <script src="collections/RoleList.js"></script>
+  <script src="models/Bed.js"></script>
+  <script src="collections/BedList.js"></script>
+  <script src="models/RoomGrade.js"></script>
+  <script src="collections/RoomGradeList.js"></script>
+  <script src="models/Photo.js"></script>
+  <script src="collections/PhotoList.js"></script>
+  <script src="models/RoleDetail.js"></script>
+  <script src="collections/RoleDetailList.js"></script>
+  <script src="models/Room.js"></script>
+  <script src="collections/RoomList.js"></script>
+  <script src="models/check.js"></script>
+  <script src="collections/checkList.js"></script>
+  <script src="models/checkArea.js"></script>
+  <script src="collections/checkAreaList.js"></script>
+  <!-- include spec files here... -->
+  <script src="spec/test.js"></script>
+  <script>
+    if (navigator.userAgent.indexOf('PhantomJS') === -1) {
+      mocha.run();
+    }
+  </script>
+</body>
+</html>
