@@ -1,0 +1,24 @@
+<header class="ui-header ui-header-positive ui-border-b fadeIn animated">
+  <i class="ui-icon-return" onclick="history.back()"></i>
+  <h1>打分员登录</h1>
+  
+</header>
+
+
+<div class="ui-form ui-border-t">
+  <div class="ui-form-item ui-border-b">
+      <label>帐号</label>
+      <input id="username" type="text" placeholder="请输入帐号" value="<% if(username){ %><%= username %><% } %>">
+      <a href="#" class="ui-icon-close"></a>
+  </div>
+  <div class="ui-form-item ui-border-b">
+      <label>密码</label>
+      <input id="password" type="password" placeholder="请输入密码" value="<% if(password){ %> <%= password %> <% } %>">
+      <a href="#" class="ui-icon-close"></a>
+  </div>
+  <div class="ui-btn-wrap">
+    <button class="ui-btn-lg  ui-btn-primary login-btn">
+        登录
+    </button>
+  </div>
+</div>

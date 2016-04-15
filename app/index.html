@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="no-js" lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <title>寝室打分</title>
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimum-scale=1,maximum-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+    
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/frozenui/dist/css/frozen.css">
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <link rel="stylesheet" href="http://7xs9eo.com1.z0.glb.clouddn.com/gradeWX/font/iconfont.css">
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="ui-loading-block hide" id="loading">
+      <div class="ui-loading-cnt">
+          <i class="ui-loading-bright"></i>
+          <p>正在加载中...</p>
+      </div>
+    </div>
+
+    <section id="login" class="fadeIn animated hide">
+    </section>
+    
+    <section id="gradetype" class="fadeIn animated hide">
+    </section>
+    
+    <section id="index" class="fadeIn animated hide">
+    </section>
+    
+    <section id="givegrade" class="fadeIn animated hide">
+    </section>
+    
+    <section id="bindroom" class="fadeIn animated hide">
+    </section>
+    
+    <section id="checkgrade" class="fadeIn animated hide">
+    </section>
+    
+    <section id="gradedetail" class="fadeIn animated hide">
+    </section>
+
+    <!-- build:js scripts/vendor.js -->
+    <script src="bower_components/zepto/zepto.js"></script>
+    <script src="bower_components/frozenui/dist/js/frozen.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/templates.js"></script>
+    <script src="scripts/routes/route.js"></script>
+    <script src="scripts/views/login.js"></script>
+    <script src="scripts/views/index.js"></script>
+    <script src="scripts/views/gradetype.js"></script>
+    <script src="scripts/views/givegrade.js"></script>
+    <script src="scripts/views/bindRoome.js"></script>
+    <script src="scripts/views/checkgrade.js"></script>
+    <script src="scripts/views/gradedetail.js"></script>
+    <script src="scripts/models/usermodel.js"></script>
+    <script src="scripts/models/gradesettings.js"></script>
+    <script src="scripts/models/schoolyear.js"></script>
+    <script src="scripts/collections/SchoolYearList.js"></script>
+    <script src="scripts/models/liveArea.js"></script>
+    <script src="scripts/collections/liveAreaList.js"></script>
+    <script src="scripts/models/floor.js"></script>
+    <script src="scripts/collections/floorList.js"></script>
+    <script src="scripts/models/GradeTable.js"></script>
+    <script src="scripts/collections/GradeTableList.js"></script>
+    <script src="scripts/models/Role.js"></script>
+    <script src="scripts/collections/RoleList.js"></script>
+    <script src="scripts/models/Bed.js"></script>
+    <script src="scripts/collections/BedList.js"></script>
+    <script src="scripts/models/RoomGrade.js"></script>
+    <script src="scripts/collections/RoomGradeList.js"></script>
+    <script src="scripts/models/Photo.js"></script>
+    <script src="scripts/collections/PhotoList.js"></script>
+    <script src="scripts/models/RoleDetail.js"></script>
+    <script src="scripts/collections/RoleDetailList.js"></script>
+    <script src="scripts/models/Room.js"></script>
+    <script src="scripts/collections/RoomList.js"></script>
+    <script src="scripts/models/check.js"></script>
+    <script src="scripts/collections/checkList.js"></script>
+    <script src="scripts/models/checkArea.js"></script>
+    <script src="scripts/collections/checkAreaList.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

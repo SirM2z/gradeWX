@@ -1,0 +1,16 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "dependencies": {
+    "backbone": "~1.1.0",
+    "modernizr": "~2.7.1",
+    "lodash": "~2.4.1",
+    "zepto": "^1.1.6",
+    "frozenui": "*",
+    "animate.css": "^3.5.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}

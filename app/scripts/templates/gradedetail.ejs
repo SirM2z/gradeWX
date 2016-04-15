@@ -1,0 +1,202 @@
+<header class="ui-header ui-header-positive ui-border-b fadeIn animated">
+  <i class="ui-icon-return" onclick="history.back()"></i>
+  <% if(type=='day') {%>
+  <% var day=typeData.split('-')[2] %>
+  <h1>日打分-<%= day%>号-<%= roomName %>寝室</h1>
+  <% } %>
+  
+  <% if(type=='week') {%>
+  <h1>周打分-第<%= typeData%>周-<%= roomName %>寝室</h1>
+  <% } %>
+  
+  <% if(type=='month') {%>
+  <h1>月打分-<%= typeData%>月-<%= roomName %>寝室</h1>
+  <% } %>
+  
+  <% if(type=='check') {%>
+  <h1>抽查-<%= typeData%>-<%= roomName %>寝室</h1>
+  <% } %>
+  <div class="ui-personal reset"></div>
+</header>
+<% var num=0; %>
+<div class="ui-tab gradedetail-tab">
+  <ul class="ui-tab-nav ui-border-b">
+    <li class="current">寝室</li>
+    <li>
+    床位
+    </li>
+    <li>
+    拍照
+    </li>
+  </ul>
+  <ul class="ui-tab-content">
+  
+  
+    <li data-linum="1">
+    
+      <% if(roomGradeList.length>0){ %>
+    
+      <% for(var i=0,ilen=roomGradeList.length;i<ilen;i++){ %>
+      
+      <h4> <%= roomGradeList[i].typeName %> </h4>
+      <ul class="room">
+      
+      <% for(var j=0,jlen=roomGradeList[i].itemList.length;j<jlen;j++){ %>
+      
+        <% if(roomGradeList[i].itemList[j].standardType==0){ %>
+        <li class="grade-item" data-itemid="<%= roomGradeList[i].itemList[j].itemId %>" 
+        data-fullmark="<%= roomGradeList[i].itemList[j].score %>">
+          <div class="table-cell-div left-table-cell" ><%= roomGradeList[i].itemList[j].title %> （<%= roomGradeList[i].itemList[j].maxScore %>）</div>
+          <div class="table-cell-div right-table-cell"><span data-fullmark="<%= roomGradeList[i].itemList[j].maxScore %>"><%= roomGradeList[i].itemList[j].score %>
+          <i class="<% if(roomGradeList[i].itemList[j].maxScore!=roomGradeList[i].itemList[j].score){ %> active <% } %>" >
+            <% if(roomGradeList[i].itemList[j].maxScore!=roomGradeList[i].itemList[j].score){ %> <%= roomGradeList[i].itemList[j].score-roomGradeList[i].itemList[j].maxScore %> <% } %>
+          </i></span>
+          </div>
+          <% num+=roomGradeList[i].itemList[j].score %>
+        </li>
+        <% }else if(roomGradeList[i].itemList[j].standardType==1){ %>
+        <li class="gradeok-item" data-itemid="<%= roomGradeList[i].itemList[j].itemId %>" 
+        data-fullmark="<% if(roomGradeList[i].itemList[j].score==-1){ %> -1 <% }else{ %> -2 <% } %>">
+          <div class="table-cell-div left-table-cell" ><%= roomGradeList[i].itemList[j].title %></div>
+          <div class="table-cell-div right-table-cell"><i class="iconfont <% if(roomGradeList[i].itemList[j].score==-1){ %> icon-right <% }else{ %> icon-wrong <% } %> room-rules"></i></div>
+        </li>
+        <% } %>
+      
+      <% } %>
+      
+      </ul>
+      
+      <% } %>
+      
+      <% }else{ %>
+      
+      <h4> 寝室分 </h4>
+      <ul class="room">
+        <div class="ui-tips ui-tips-warn">
+          <i></i><span>没有打分信息</span>
+        </div>
+      </ul>
+      
+      <% } %>
+      
+      <h4>违章</h4>
+      <ul class="break-rules">
+        
+        <% if(roleDetailList.length>0){ %>
+        
+        <% for(var i=0,ilen=roleList.length;i<ilen;i++){ %>
+        <li>
+          <div class="rules-table">
+            <div class="rules-col rules-title"><%= roleList[i].title %></div>
+            <div class="rules-col rules-content role-item" data-itemid="<%= roleList[i].itemId %>">
+              
+              <% for(var j=0,jlen=roleDetailList.length;j<jlen;j++){ %>
+              <% if(roleDetailList[j].itemId==roleList[i].itemId){ %>
+              
+              <% for(var z=0,zlen=roleDetailList[j].list.length;z<zlen;z++){ %>
+              <% if(roleDetailList[j].list[z].bedId==''){ %>
+              
+              <span class="break-room role-room-item">寝室违章</span>
+              
+              <% }else{ %>
+              
+              <% var text=roleDetailList[j].list[z].bedName %>
+              <span class="role-bed-item" data-bedid="<%= roleDetailList[j].list[z].bedId %>"><%= text %></span>
+              
+              <% } %>              
+              <% } %>
+              
+              <% } %>
+              <% } %>
+              
+            </div>
+          </div>
+        </li>
+        <% } %>
+        
+        <% }else{ %>
+        
+        <div class="ui-tips ui-tips-warn">
+          <i></i><span>没有违章项</span>
+        </div>
+        
+        <% } %>
+        
+      </ul>
+      
+    </li>
+    
+    
+    <li data-linum="2">
+      
+      <% if(bedList.length>0 && bedList[0].itemList.length>0){ %>
+      
+      <% for(var i=0,ilen=bedList.length;i<ilen;i++){ %>
+      <h4><%= bedList[i].bedName %>号床位 - <%= bedList[i].studentName %>(<%= bedList[i].studentNumber %>)</h4>
+      <ul class="bed">
+      
+        <% for(var j=0,jlen=bedList[i].itemList.length;j<jlen;j++){ %>
+        
+        <% if(bedList[i].itemList[j].standardType==0){ %>
+        <li class="bed-item" data-studentkey="<%= bedList[i].studentKey %>" 
+        data-bedid="<%= bedList[i].bedId %>" 
+        data-itemid="<%= bedList[i].itemList[j].itemId %>" 
+        data-fullmark="<%= bedList[i].itemList[j].score %>">
+          <div class="table-cell-div left-table-cell" ><%= bedList[i].itemList[j].title %> （<%= bedList[i].itemList[j].maxScore %>）</div>
+          <div class="table-cell-div right-table-cell"><span data-fullmark="<%= bedList[i].itemList[j].maxScore %>"><%= bedList[i].itemList[j].score %>
+          <i class="<% if(bedList[i].itemList[j].maxScore!=bedList[i].itemList[j].score){ %> active <% } %>" >
+            <% if(bedList[i].itemList[j].maxScore!=bedList[i].itemList[j].score){ %> <%= bedList[i].itemList[j].score-bedList[i].itemList[j].maxScore %> <% } %>
+          </i></span>
+          </div>
+          <% num+=bedList[i].itemList[j].score %>
+        </li>
+        <% }else if(bedList[i].itemList[j].standardType==1){ %>
+        <li class="bed-item" data-studentkey="<%= bedList[i].studentKey %>" 
+        data-bedid="<%= bedList[i].bedId %>" 
+        data-itemid="<%= bedList[i].itemList[j].itemId %>" 
+        data-fullmark="<% if(bedList[i].itemList[j].score==-1){ %> -1 <% }else{ %> -2 <% } %>">
+          <div class="table-cell-div left-table-cell" ><%= bedList[i].itemList[j].title %></div>
+          <div class="table-cell-div right-table-cell"><i class="iconfont <% if(bedList[i].itemList[j].score==-1){ %> icon-right <% }else{ %> icon-wrong <% } %> room-rules"></i></div>
+        </li>
+        <% } %>
+        
+        <% } %>
+        
+      </ul>
+      <% } %>
+      
+      <% }else{ %>
+      
+      <h4>床位分</h4>
+      <ul class="bed">
+        <div class="ui-tips ui-tips-warn">
+          <i></i><span>没有打分信息</span>
+        </div>
+      </ul>
+      
+      <% } %>
+      
+    </li>
+    
+    
+    <li data-linum="3">
+      <h4>拍照</h4>
+      <ul class="ui-grid-trisect ui-border-b photo">
+        <% for(var i=0,ilen=photoList.length;i<ilen;i++){ %>
+        <li class="photo-farther-item">
+          <div class="ui-grid-trisect-img">
+            <span data-fileid="<%= photoList[i].fileId %>" class="photo-item" style="background-image:url(<%= photoList[i].picUrl %>)"></span>
+          </div>
+        </li>
+        <% } %>
+        <% if(!photoList || photoList.length==0){ %>
+        <div class="ui-tips ui-tips-warn">
+          <i></i><span>没有打分照片</span>
+        </div>
+        <% } %>
+      </ul>
+    </li>
+    
+    
+  </ul>
+</div>
