@@ -110,7 +110,7 @@ App.Routers = App.Routers || {};
     },
     bindroom: function(schoolcode){
       App.g.schoolcode=schoolcode;
-      App.g.token='fdsfdsfdsaf1312321';
+      //App.g.token='fdsfdsfdsaf1312321';
       //console.log(schoolcode);
       new App.Views.BindRoome();
       this.hidesection();

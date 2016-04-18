@@ -17,6 +17,7 @@
   <div class="ui-form-item ui-border-b">
     <label>周打分:</label>
     <div class="ui-select-group week">
+      <% if(yearlist.length>0){ %>
       <div class="ui-select">
         <select class="week-select">
         <% if(yearlist.length>0){ %>
@@ -30,8 +31,8 @@
       </div>
       <div class="ui-select">
         <select class="week-select-second">
-        <% if(yearlist.length>0){ %>
-        <% for(var i=0;i<2;i++ ) {%>
+        <% if(yearlist.length>0 && schoolyearModel.semesterList.length>0){ %>
+        <% for(var i=0,ilen=schoolyearModel.semesterList.length;i<ilen;i++ ) {%>
           <option value="<%= schoolyearModel.semesterList[i].semesterId %>" <% if(schoolyearModel.semesterList[i].isCurrent==1) { %> selected <% }%> >学期<%= i+1%></option>
         <% }%>
         <% }else{ %>
@@ -42,7 +43,7 @@
       <div class="ui-select">
         <select>
         <% if(yearlist.length>0 && schoolyearModel.semesterList.length>0){ %>
-        <% for(var i=0;i<schoolyearModel.semesterList[0].countweek;i++ ) {%>
+        <% for(var i=0;i<schoolyearModel.semesterList[currentSemesterIndex].countweek;i++ ) {%>
           <option value="<%= i+1 %>" <% if(schoolyearModel.semesterList[currentSemesterIndex].currentWeek==i+1){ %> selected <% } %> >第<%= i+1%>周</option>
         <% }%>
         <% }else{ %>
@@ -50,6 +51,13 @@
         <% } %>
         </select>
       </div>
+      <% }else{ %>
+      <div class="ui-select">
+        <select>
+          <option selected value="0" >还未配置学期信息</option>
+        </select>
+      </div>
+      <% } %>
     </div>
     <div class="ui-btn week-btn">查分</div>
   </div>
@@ -63,6 +71,7 @@
   <div class="ui-form-item ui-border-b">
     <label>抽&nbsp;&nbsp;&nbsp;查:</label>
     <div class="ui-select-group check">
+      <% if(yearlist.length>0){ %>
       <div class="ui-select">
         <select class="check-select">
         <% if(yearlist.length>0){ %>
@@ -76,7 +85,7 @@
       </div>
       <div class="ui-select">
         <select class="check-select-second">
-        <% if(yearlist.length>0){ %>
+        <% if(yearlist.length>0 && schoolyearModel.semesterList.length>0){ %>
         <% for(var i=0,ilen=schoolyearModel.semesterList.length;i<ilen;i++ ) {%>
           <option value="<%= schoolyearModel.semesterList[i].semesterId %>" <% if(schoolyearModel.semesterList[i].isCurrent==1) { %> selected <% }%> >学期<%= i+1%></option>
         <% }%>
@@ -85,6 +94,13 @@
         <% } %>
         </select>
       </div>
+      <% }else{ %>
+      <div class="ui-select">
+        <select>
+          <option selected value="0" >还未配置学期信息</option>
+        </select>
+      </div>
+      <% } %>
     </div>
     <div class="ui-btn check-btn">查分</div>
   </div>

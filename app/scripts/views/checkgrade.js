@@ -80,14 +80,17 @@ App.Views = App.Views || {};
     render: function () {
       this.schoolyearList = App.g.schoolyearlist.toJSON();
       var schoolyearModel= null;
-      for(var i=0;i<this.schoolyearList.length;i++){
-        if(this.schoolyearList[i].semesterList[0].isCurrent==1){
-          schoolyearModel=this.schoolyearList[i];
-          break;
+      if(this.schoolyearList.length>0){
+        for(var i=0;i<this.schoolyearList.length;i++){
+          for(var j=0,jlen=this.schoolyearList[i].semesterList.length;j<jlen;j++){
+            if(this.schoolyearList[i].semesterList[j].isCurrent==1){
+              schoolyearModel=this.schoolyearList[i];
+              break;
+            }
+          }
         }
-        if(this.schoolyearList[i].semesterList[1].isCurrent==1){
-          schoolyearModel=this.schoolyearList[i];
-          break;
+        if(!schoolyearModel){
+          schoolyearModel=this.schoolyearList[0];
         }
       }
       if(!schoolyearModel){

@@ -85,6 +85,9 @@ App.Views = App.Views || {};
       else if(App.g.type=='month'){
         url=App.URL.getMonthBedGrade + '?token=' + App.g.token + '&roomid='+ App.g.roomid + '&date='+ App.g.typeData;
       }
+      else if(App.g.type=='check'){
+        url=App.URL.getCheckBedGrade + '?token=' + App.g.token + '&roomid='+ App.g.roomid + '&checkid='+ App.g.checkId;
+      }
       //获取床位打分信息
       $.ajax({
         url: url,
@@ -136,6 +139,9 @@ App.Views = App.Views || {};
       }
       else if(App.g.type=='month'){
         url=App.URL.getMonthRoomGradeDetail + '?token=' + App.g.token + '&roomscoreid='+ App.g.roomscoreid;
+      }
+      else if(App.g.type=='check'){
+        url=App.URL.getCheckRoomGradeDetail + '?token=' + App.g.token + '&roomscoreid='+ App.g.roomscoreid;
       }
       //获取寝室打分信息
       $.ajax({
@@ -191,6 +197,10 @@ App.Views = App.Views || {};
         specialid+=App.g.roomid+'-'+App.g.typeData;
         url += specialid;
       }
+      else if(App.g.type=='check'){
+        specialid+=App.g.roomid+'-'+App.g.checkId;
+        url += specialid;
+      }
       $.ajax({
         url:url,
         type:'GET',
@@ -234,6 +244,9 @@ App.Views = App.Views || {};
       }
       else if(App.g.type=='month'){
         url=App.URL.getMonthPhotoGrade + '?token=' + App.g.token + '&roomid='+ App.g.roomid + '&date='+ App.g.typeData;
+      }
+      else if(App.g.type=='check'){
+        url=App.URL.getCheckPhotoGrade + '?token=' + App.g.token + '&roomid='+ App.g.roomid + '&checkid='+ App.g.checkId;
       }
       $.ajax({
         url:url,
