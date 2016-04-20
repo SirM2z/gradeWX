@@ -199,6 +199,7 @@ App.Views = App.Views || {};
       var floorSelect=$('.floor-select');
       floorSelect.empty().append('<option value="0" selected >请选择楼层</option>');
       var _selfthis=this;
+      App.loading(true);
       $.ajax({
         url: App.URL.getRoomByBan + '?flatid='+ App.g.flatid +'&token='+ App.g.token,
         type: 'GET',
@@ -211,6 +212,7 @@ App.Views = App.Views || {};
               App.g.roomList.push(result.data.floorList[i]);
               floorSelect.append('<option value="'+result.data.floorList[i].floorId+'" >'+result.data.floorList[i].floorName+'</option>');
             }
+            App.loading();
           } else {
             $.tips({
               content: result.msg,
