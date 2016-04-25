@@ -84,29 +84,25 @@
         
         <% if(roleDetailList.length>0){ %>
         
-        <% for(var i=0,ilen=roleList.length;i<ilen;i++){ %>
+        <% for(var i=0,ilen=roleDetailList.length;i<ilen;i++){ %>
         <li>
           <div class="rules-table">
-            <div class="rules-col rules-title"><%= roleList[i].title %></div>
-            <div class="rules-col rules-content role-item" data-itemid="<%= roleList[i].itemId %>">
+            <div class="rules-col rules-title"><%= roleDetailList[i].itemName %></div>
+            <div class="rules-col rules-content role-item" data-itemid="<%= roleDetailList[i].itemId %>">
               
-              <% for(var j=0,jlen=roleDetailList.length;j<jlen;j++){ %>
-              <% if(roleDetailList[j].itemId==roleList[i].itemId){ %>
+              <% for(var j=0,jlen=roleDetailList[i].list.length;j<jlen;j++){ %>
               
-              <% for(var z=0,zlen=roleDetailList[j].list.length;z<zlen;z++){ %>
-              <% if(roleDetailList[j].list[z].bedId==''){ %>
+              <% if(roleDetailList[i].list[j].bedId==''){ %>
               
               <span class="break-room role-room-item">寝室违章</span>
               
               <% }else{ %>
               
-              <% var text=roleDetailList[j].list[z].bedName %>
-              <span class="role-bed-item" data-bedid="<%= roleDetailList[j].list[z].bedId %>"><%= text %></span>
+              <% var text=roleDetailList[i].list[j].bedName %>
+              <span class="role-bed-item" data-bedid="<%= roleDetailList[i].list[j].bedId %>"><%= text %></span>
               
               <% } %>              
-              <% } %>
               
-              <% } %>
               <% } %>
               
             </div>

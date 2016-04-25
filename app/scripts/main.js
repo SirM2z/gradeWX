@@ -1,8 +1,8 @@
 /*global app, $*/
 
 //var APIServerHost= 'http://test.houqinbao.com/gyxt_api';
-var APIServerHost= 'http://120.55.84.193/Geese_Apartment';
-//var APIServerHost= 'http://ap.houqinbao.com/Geese_Apartment';
+//var APIServerHost= 'http://120.55.84.193/Geese_Apartment';
+var APIServerHost= 'http://114.55.17.193/Geese_Apartment';
 
 window.App = {
   Models: {},

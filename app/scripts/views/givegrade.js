@@ -32,7 +32,7 @@ App.Views = App.Views || {};
       'click .room li span':'lessgrade',
       'click .bed li span':'lessbedgrade',
       'click .room li .room-rules':'roomRules',
-      'click .bed li .room-rules':'roomRules',
+      'click .bed li .room-rules':'bedRules',
       'click .rules-menu button':'rulesMenu',
       'click .rules-content span:not(.rules-add)':'cancelRules',
       'click .photo li:not(.photo-add-li)':'cancelPhoto',
@@ -494,6 +494,23 @@ App.Views = App.Views || {};
         _this.removeClass('icon-wrong').addClass('icon-right');
         _this.parent().parent().data('fullmark',-1)
         allgrade.text(parseInt(allgrade.text().trim())+1);
+      }
+    },
+    
+    bedRules: function(event){
+      event.stopPropagation();
+      var _this=$(event.target);
+      // var allgrade=$('.all-grade');
+      //console.log(_this);
+      if(_this.hasClass('icon-right')){
+        _this.removeClass('icon-right').addClass('icon-wrong');
+        _this.parent().parent().data('fullmark',-2)
+        // allgrade.text(parseInt(allgrade.text().trim())-1);
+      }
+      else{
+        _this.removeClass('icon-wrong').addClass('icon-right');
+        _this.parent().parent().data('fullmark',-1)
+        // allgrade.text(parseInt(allgrade.text().trim())+1);
       }
     },
     
@@ -1062,12 +1079,14 @@ App.Views = App.Views || {};
     countAjax:function(){
       if(this.ajaxCurrent==this.ajaxNum){
         var floorList=App.g.floorList.toJSON();
-        for(var i=0,ilen=floorList.length;i<ilen;i++){
-          for(var j=0,jlen=floorList[i].roomList.length;j<jlen;j++){
+        for(var i=App.g.floorCurrent,ilen=floorList.length;i<ilen;i++){
+          for(var j=App.g.floorNumCurrent,jlen=floorList[i].roomList.length;j<jlen;j++){
             if(floorList[i].roomList[j].roomScoreId=='' && floorList[i].roomList[j].grade!=2 && floorList[i].roomList[j].roomNum!=App.g.roomName){
               App.g.addOrEdit=0;
               App.g.roomid=floorList[i].roomList[j].roomId;
               App.g.roomName=floorList[i].roomList[j].roomNum;
+              App.g.floorCurrent=i;
+              App.g.floorNumCurrent=j;
               $.tips({
                 content:'打分成功!',
                 stayTime:2000,
@@ -1080,14 +1099,20 @@ App.Views = App.Views || {};
               return;
             }
           }
+          App.g.floorNumCurrent=0;
         }
-        $.tips({
-          content:'该楼栋寝室已打分完毕!',
-          stayTime:2000,
-          type:"warn"
-        });
-        Backbone.history.navigate('#index', {trigger: true, replace: true});
-        App.loading();
+        var indexFloor=App.g.floorCurrent+1;
+        if(indexFloor===floorList.length && App.g.floorNumCurrent===0){
+          App.loading();
+          var el=$.tips({
+            content:'该楼栋寝室已打分完毕!',
+            stayTime:2000,
+            type:"warn"
+          });
+          el.on("tips:hide",function(){
+            Backbone.history.navigate('#index', {trigger: true, replace: true});
+          })
+        }
       }
     }
 

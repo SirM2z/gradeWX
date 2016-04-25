@@ -154,8 +154,8 @@ App.Views = App.Views || {};
         return;
       }
       App.g.roomid=_this.data('roomid');
-      //App.g.floorCurrent=_this.data('floor');
-      //App.g.floorNumCurrent=_this.data('num');
+      App.g.floorCurrent=_this.data('floor');
+      App.g.floorNumCurrent=_this.data('num');
       App.g.roomName=_this.data('roomname');
       if(_this.hasClass('active')){
         App.g.addOrEdit=1;
