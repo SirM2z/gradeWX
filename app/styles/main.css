@@ -516,3 +516,27 @@ section.animated{
 #gradedetail header h1 i{
   padding-left: 5px;
 }
+#gradedetail .roules-footer{
+  padding: 0;
+  position: fixed;
+  height: 44px;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+#gradedetail .roules-footer .roules-grade {
+  width: 50%;
+  background-color: #228feb;
+  color: #fff;
+  line-height: 44px;
+  font-size: 15px;
+}
+#gradedetail .roules-footer .roules-num {
+  width: 50%;
+}
+#gradedetail .roules-footer .roules-num span{
+  line-height: 44px;
+  color: #ff9501;
+}
